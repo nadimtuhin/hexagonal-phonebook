@@ -100,15 +100,28 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative">
+      {/* Background Pattern */}
+      <div 
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f1f5f9' fill-opacity='0.4'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"
+        }}
+      ></div>
+      
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">
-            📱 My Phonebook
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl mb-4 sm:mb-6 shadow-lg">
+            <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-gray-900 via-indigo-900 to-purple-900 bg-clip-text text-transparent mb-4 sm:mb-6">
+            My Phonebook
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            A modern contact management system built with hexagonal architecture
+          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed px-4">
+            A modern contact management system built with <span className="font-semibold text-indigo-600">hexagonal architecture</span>
           </p>
         </div>
 
@@ -132,26 +145,26 @@ export default function Home() {
         {!showForm && (
           <>
             {/* Search and Add Section */}
-            <div className="max-w-4xl mx-auto mb-8">
-              <div className="bg-white rounded-xl shadow-lg p-6">
-                <div className="flex flex-col sm:flex-row gap-4">
+            <div className="max-w-4xl mx-auto mb-8 sm:mb-10 px-4 sm:px-0">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-4 sm:p-6 lg:p-8">
+                <div className="flex flex-col gap-4 sm:gap-6">
                   <div className="relative flex-1">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="absolute inset-y-0 left-0 pl-3 sm:pl-4 flex items-center pointer-events-none">
+                      <svg className="h-5 w-5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                       </svg>
                     </div>
                     <input
                       type="text"
-                      placeholder="Search contacts by name, phone, or email..."
+                      placeholder="Search contacts..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="block w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 border-2 border-gray-200 rounded-xl leading-5 bg-white/50 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 text-sm sm:text-base"
                     />
                   </div>
                   <button
                     onClick={() => setShowForm(true)}
-                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
+                    className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full sm:w-auto"
                   >
                     <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -163,27 +176,41 @@ export default function Home() {
             </div>
 
             {/* Stats Section */}
-            <div className="max-w-4xl mx-auto mb-8">
-              <div className="bg-white rounded-xl shadow-lg p-6">
-                <div className="flex items-center justify-between">
+            <div className="max-w-4xl mx-auto mb-8 sm:mb-10 px-4 sm:px-0">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg border border-blue-100 p-4 sm:p-6">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
-                      <svg className="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                      </svg>
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                        <svg className="h-5 w-5 sm:h-6 sm:w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                      </div>
                     </div>
-                    <div className="ml-4">
-                      <p className="text-2xl font-bold text-gray-900">{total}</p>
-                      <p className="text-sm text-gray-500">Total Contacts</p>
+                    <div className="ml-3 sm:ml-4">
+                      <p className="text-2xl sm:text-3xl font-bold text-gray-900">{total}</p>
+                      <p className="text-xs sm:text-sm font-medium text-gray-600">Total Contacts</p>
                     </div>
                   </div>
-                  {searchQuery && (
-                    <div className="text-right">
-                      <p className="text-lg font-semibold text-gray-900">{contacts.length}</p>
-                      <p className="text-sm text-gray-500">Search Results</p>
-                    </div>
-                  )}
                 </div>
+                
+                {searchQuery && (
+                  <div className="bg-gradient-to-br from-white to-purple-50 rounded-2xl shadow-lg border border-purple-100 p-4 sm:p-6">
+                    <div className="flex items-center">
+                      <div className="flex-shrink-0">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
+                          <svg className="h-5 w-5 sm:h-6 sm:w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="ml-3 sm:ml-4">
+                        <p className="text-2xl sm:text-3xl font-bold text-gray-900">{contacts.length}</p>
+                        <p className="text-xs sm:text-sm font-medium text-gray-600">Search Results</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -191,8 +218,12 @@ export default function Home() {
             <div className="max-w-6xl mx-auto">
               {isLoading ? (
                 <div className="text-center py-20">
-                  <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
-                  <p className="mt-4 text-lg text-gray-500">Loading contacts...</p>
+                  <div className="relative inline-flex items-center justify-center">
+                    <div className="w-16 h-16 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
+                    <div className="absolute inset-0 w-16 h-16 border-4 border-transparent border-r-purple-600 rounded-full"></div>
+                  </div>
+                  <p className="mt-6 text-lg font-medium text-gray-600">Loading your contacts...</p>
+                  <p className="mt-2 text-sm text-gray-500">Please wait while we fetch your data</p>
                 </div>
               ) : (
                 <ContactList
@@ -206,20 +237,25 @@ export default function Home() {
         )}
 
         {showForm && (
-          <div className="max-w-2xl mx-auto">
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <div className="flex items-center mb-6">
+          <div className="max-w-2xl mx-auto px-4 sm:px-0">
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 p-4 sm:p-6 lg:p-8">
+              <div className="flex items-start sm:items-center mb-6 sm:mb-8">
                 <button
                   onClick={handleCancel}
-                  className="mr-4 p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                  className="mr-3 sm:mr-4 p-2 sm:p-3 text-gray-400 rounded-xl flex-shrink-0"
                 >
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                   </svg>
                 </button>
-                <h2 className="text-3xl font-bold text-gray-900">
-                  {editingContact ? 'Edit Contact' : 'New Contact'}
-                </h2>
+                <div className="min-w-0 flex-1">
+                  <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-gray-900 to-indigo-900 bg-clip-text text-transparent">
+                    {editingContact ? 'Edit Contact' : 'New Contact'}
+                  </h2>
+                  <p className="text-gray-600 mt-1 text-sm sm:text-base">
+                    {editingContact ? 'Update contact information' : 'Add a new contact to your phonebook'}
+                  </p>
+                </div>
               </div>
               <ContactForm
                 contact={editingContact}
